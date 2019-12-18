@@ -1,0 +1,26 @@
+body {
+  background-color: gray;
+}
+
+.contenedor{
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ccc;
+  border: 2px solid silver;
+  padding: 30px;
+
+}
+
+.datos{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span{
+  display: none;
+  font-size: 10px;
+  color: red;
+
+}
