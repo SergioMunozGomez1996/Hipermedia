@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ejemplo</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      // Esperamos a que se cargue la API de Cordova
+      function onLoad() {
+          document.addEventListener("deviceready", onDeviceReady, false);
+      }
+
+      // La API de Cordova ya est� disponible
+      function onDeviceReady() {
+          // �Ya podemos usar la librer�a de Cordova!
+          var element = document.getElementById("log");
+          var cordova = document.getElementById("phoneGap");
+          var modelo = document.getElementById("modelo");
+          var plataforma = document.getElementById("plataforma");
+          var uuid = document.getElementById("uuid");
+          var version = document.getElementById("version");
+          checkConnection();
+
+          element.innerHTML += "- API de Cordova cargada.<br/>";
+          cordova.innerHTML += device.cordova;
+          modelo.innerHTML += device.model;
+          plataforma.innerHTML += device.platform;
+          uuid.innerHTML += device.uuid;
+          version.innerHTML += device.version;
+
+          //para lanzar la funcion de la brujula
+          var options = { frequency: 1000 }; // actualizar cada segundo
+          var watchID = navigator.compass.watchHeading(onSuccess, onError, options);
+
+          //para lanzar la funcion del acelerometro
+          var optionsAcelerometro = { frequency: 1000 };  // Update every 3 seconds
+          var watchID = navigator.accelerometer.watchAcceleration(onSuccessAcelerometro, onErrorAcelerometro, optionsAcelerometro);
+
+          document.addEventListener("pause", onPause, false);
+          document.addEventListener("resume", onResume, false);
+          document.addEventListener("backbutton", onBackKeyDown, false);
+          document.addEventListener("menubutton", onMenuKeyDown, false);
+          document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
+          document.addEventListener("volumeupbutton", onVolumeUpKeyDown, false);
+
+          document.addEventListener("offline", onOffline, false);
+          document.addEventListener("online", onOnline, false);
+      }
+
+      // Se ha producido el evento pause!
+      function onPause() {
+          var element = document.getElementById("log");
+          element.innerHTML += "- Evento pause.<br/>";
+      }
+
+      function onResume() {
+          var element = document.getElementById("log");
+          element.innerHTML += "- Evento resume.<br/>";
+      }
+
+      function onBackKeyDown() {
+          var element = document.getElementById("log");
+          element.innerHTML += "- Evento backbutton.<br/>";
+      }
+
+      function onMenuKeyDown() {
+          var element = document.getElementById("log");
+          element.innerHTML += "- Evento menubutton.<br/>";
+      }
+
+      function onVolumeDownKeyDown() {
+          var element = document.getElementById("log");
+          element.innerHTML += "- Evento volumedownbutton.<br/>";
+      }
+
+      function onVolumeUpKeyDown() {
+        var element = document.getElementById("log");
+          element.innerHTML += "- Evento volumeupbutton.<br/>";
+        }
+
+        function checkConnection() {
+            var networkState = navigator.connection.type;
+
+            var states = {};
+            states[Connection.UNKNOWN]  = 'Unknown connection';
+            states[Connection.ETHERNET] = 'Ethernet connection';
+            states[Connection.WIFI]     = 'WiFi connection';
+            states[Connection.CELL_2G]  = 'Cell 2G connection';
+            states[Connection.CELL_3G]  = 'Cell 3G connection';
+            states[Connection.CELL_4G]  = 'Cell 4G connection';
+            states[Connection.CELL]     = 'Cell generic connection';
+            states[Connection.NONE]     = 'No network connection';
+
+            var tipoConexion = document.getElementById("tipoConexion");
+            tipoConexion.innerHTML += states[networkState];
+        }
+
+        function onOffline() {
+            // Handle the offline event
+            var element = document.getElementById("log");
+          element.innerHTML += "- Evento offline.<br/>";
+        }
+
+        function onOnline() {
+            // Handle the online event
+            var element = document.getElementById("log");
+          element.innerHTML += "- Evento online.<br/>";
+        }
+
+        function onSuccess(heading) {
+            var orientacion = document.getElementById("orientacion");
+            orientacion.innerHTML = 'Orientacion: ' + heading.magneticHeading + 'º';
+        };
+
+        function onError(compassError) {
+            alert('Compass error: ' + compassError.code);
+        };
+
+        function onSuccessAcelerometro(acceleration) {
+          var aceleracionX = document.getElementById("aceleracionX");
+          var aceleracionY = document.getElementById("aceleracionY");
+          var aceleracionZ = document.getElementById("aceleracionZ");
+
+          aceleracionX.innerHTML = 'Acceleration X: ' + acceleration.x;
+          aceleracionY.innerHTML = 'Acceleration Y: ' + acceleration.y;
+          aceleracionZ.innerHTML = 'Acceleration Z: ' + acceleration.z;
+        }
+
+        function onErrorAcelerometro() {
+            alert('onError!');
+        }
+    </script>
+  </head>
+  <body onload="onLoad()">
+    <h4>Dispositivo</h4>
+    <ul>
+      <li id="phoneGap">PhoneGap version: </li>
+      <li id="modelo">Modelo: </li>
+      <li id="plataforma">Plataforma: </li>
+      <li id="uuid">UUID: </li>
+      <li id="version">Versi&oacute;n: </li>
+      <li id="tipoConexion">Tipo de conexi&oacute;n: </li>
+      <li id="orientacion">Orientaci&oacute;n: </li>
+      <li id="aceleracionX">Aceleraci&oacute;n X: </li>
+      <li id="aceleracionY">Aceleraci&oacute;n Y: </li>
+      <li id="aceleracionZ">Aceleraci&oacute;n Z: </li>
+    </ul>
+
+    <h4>Log de eventos:</h4>
+
+    <div id="log" style="margin:5px;padding:5px;border:1px solid silver;color:gray">
+    </div>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+body {
+  font-size: 10pt;
+  padding: 5px;
+}
+header {
+  /* TODO NO PERMITIR ELEMENTOS POR EL LADO IZQUIERDO */
+        clear:left;
+  /* TODO ancho 100% */
+        width: 100%;
+  background-color: #005682;
+  margin-bottom: 5px;
+  padding: 10px 5px;
+  vertical-align: middle;
+  /* TODO TAMA�O DE LETRA DE 16pt */
+        font-size: 16px;
+  /* TODO COLOR BLANCO */
+        color:white;
+}
+header img {
+  padding: 1px 20px;
+  vertical-align: middle;
+        height: 50px;
+}
+nav {
+  /* TODO NO PERMITIR ELEMENTOS POR EL LADO IZQUIERDO */
+        clear:left;
+  /* TODO ancho 100% */
+        width: 100%;
+  text-transform:uppercase;
+}
+.navElement {
+  float:left;
+  /* TODO COLOR DE FONDO #f0f0f0; */
+        background-color: #f0f0f0;
+  padding: 3px 10px;
+  margin-bottom: 5px;
+  margin-right:5px;
+}
+.navElement a {
+  color: black;
+  text-decoration: none;
+}
+
+.navElement a:hover {
+  color: white
+}
+
+.navElement:hover {
+  /* TODO COLOR DE FONDO #005682; */
+  color: white;
+        background-color: #005682;
+}
+
+.visited {
+  /* TODO COLOR DE FONDO #005682; */
+  color: white;
+  background-color: #005682;
+}
+content {
+  /* TODO NO PERMITIR ELEMENTOS POR EL LADO IZQUIERDO */
+        clear:left;
+  /* TODO ancho 100% */
+        width: 100%;
+}
+content p {
+  padding: 5px 10px;
+  text-align: justify;
+}
+footer {
+  /* TODO NO PERMITIR ELEMENTOS POR EL LADO IZQUIERDO */
+        clear:left;
+  /* TODO ancho 100% */
+        width: 100%;
+  background-color: #f0f0f0;
+  /* TODO COLOR gray; */
+        color: grey;
+}

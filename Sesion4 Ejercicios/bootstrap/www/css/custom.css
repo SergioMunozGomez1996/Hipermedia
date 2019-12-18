@@ -1,0 +1,41 @@
+header {
+    background-color: red;
+    text-align: center;
+    color: white;
+}
+.card-body {
+    text-align: center;
+}
+.card {
+     border-top: 10px;
+     
+}
+footer {
+    background-color: grey;
+}
+.card img{
+    display:block;
+    margin:auto;
+}
+
+.carousel, .carousel-inner > .item > img {
+  height: 500px;
+}
+
+@media (max-width: 576px) {
+  .carousel, .carousel-inner > .item > img {
+    height: 200px;
+  }
+ }
+
+ @media (max-width: 768px) {
+   .carousel, .carousel-inner > .item > img {
+     height: 300px;
+   }
+  }
+
+  @media (max-width: 991px) {
+    .carousel, .carousel-inner > .item > img {
+      height: 350px;
+    }
+   }
