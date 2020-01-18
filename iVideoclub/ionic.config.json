@@ -1,0 +1,7 @@
+{
+  "name": "iVideoclub",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

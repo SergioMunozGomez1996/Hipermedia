@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>iVideoclub</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+        <ion-button *ngIf="modoLista==true; else modoGrid" (click)="cambiarVista()">
+            <ion-icon slot="icon-only" name="md-apps"></ion-icon>
+        </ion-button>
+        <ng-template #modoGrid>
+            <ion-button (click)="cambiarVista()">
+                <ion-icon slot="icon-only" name="md-reorder"></ion-icon>
+            </ion-button>
+         </ng-template>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!--<ion-list>
+      <ion-item button mode="ios" (click)="verPaginaDetalle(1)">
+          <ion-thumbnail slot="start">
+              <ion-img src="assets/posters/el_padrino.jpg"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+              <h2>El padrino</h2>
+              <p><b>Director: </b>Francis Ford Coppola<br>
+                  <b>Año: </b>1972
+              </p>
+          </ion-label>
+      </ion-item>
+      <ion-item button mode="ios" (click)="verPaginaDetalle(2)">
+          <ion-thumbnail slot="start">
+              <ion-img src="assets/posters/el_padrino_2.jpg"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+              <h2>El padrino. Parte II</h2>
+              <p><b>Director: </b>Francis Ford Coppola<br>
+                  <b>Año: </b>1974
+              </p>
+          </ion-label>
+      </ion-item>
+      <ion-item button mode="ios" (click)="verPaginaDetalle(3)">
+          <ion-thumbnail slot="start">
+              <ion-img src="assets/posters/la_lista_de_schindler.jpg"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+              <h2>La lista de Schindler</h2>
+              <p><b>Director: </b>Steven Spielberg<br>
+                  <b>Año: </b>1993
+              </p>
+          </ion-label>
+      </ion-item>
+      <ion-item button mode="ios" (click)="verPaginaDetalle(4)">
+          <ion-thumbnail slot="start">
+              <ion-img src="assets/posters/pulp_fiction.jpg"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+              <h2>Pulp Fiction</h2>
+              <p><b>Director: </b>Quientin Tarantino<br>
+                  <b>Año: </b>1994
+              </p>
+          </ion-label>
+      </ion-item>
+      <ion-item button mode="ios" (click)="verPaginaDetalle(5)">
+          <ion-thumbnail slot="start">
+              <ion-img src="assets/posters/cadena_perpetua.jpg"></ion-img>
+          </ion-thumbnail>
+          <ion-label>
+              <h2>Cadena perpetua</h2>
+              <p><b>Director: </b>Frank Darabont<br>
+                  <b>Año: </b>1994
+              </p>
+          </ion-label>
+      </ion-item>
+    </ion-list>-->
+    <div *ngIf="listaPeliculas; else listaVacia">
+        <ion-list *ngIf="modoLista == true; else modoGridLista">
+            <ion-item *ngFor="let pelicula of listaPeliculas" (click)="verPaginaDetalle(pelicula.id)" detail>                <ion-thumbnail slot="start">
+                    <ion-img src="{{pelicula.poster}}"></ion-img>
+                </ion-thumbnail>
+                <ion-label>
+                    <h2><b>{{pelicula.title}}</b></h2>
+                    <p><b>Director: </b>{{pelicula.director}}<br>
+                        <b>Año: </b>{{pelicula.year}}
+                    </p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+
+        <ng-template #modoGridLista>
+            <ion-grid *ngIf="listaPeliculas">
+                <ion-row>
+                <ion-col size="6"  size-sm="4" size-md="3" *ngFor="let pelicula of listaPeliculas" (click)="verPaginaDetalle(pelicula.id)" detail>
+                    <ion-img src="{{pelicula.poster}}"></ion-img>
+                    <ion-label >
+                        <h2><b>{{pelicula.title}}</b></h2>
+                        <p><b>Director: </b>{{pelicula.director}}<br>
+                            <b>Año: </b>{{pelicula.year}}
+                        </p>
+                    </ion-label >
+                </ion-col>
+            </ion-row>
+            </ion-grid>
+        </ng-template>
+    </div>
+    <ng-template #listaVacia>
+        <h1>La lista está vacía</h1>
+    </ng-template>
+</ion-content>

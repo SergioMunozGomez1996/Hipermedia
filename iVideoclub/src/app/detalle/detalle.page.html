@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{pelicula?.title}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="videoclub"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br>
+  <ion-card *ngIf="pelicula; else peliculaVacia">
+    <ion-img src="{{pelicula.poster}}"></ion-img>
+    <ion-card-header>
+    <ion-card-title><b>{{pelicula.title}}</b></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><b>Director: </b>{{pelicula.director}}<br>
+        <b>Año: </b>{{pelicula.year}}<br>
+        <b>Sinopsis: </b>{{pelicula.synopsis}} 
+      </p>
+    </ion-card-content>
+   </ion-card>
+
+   <ng-template #peliculaVacia>
+     <h1>Cargando contenido</h1>
+   </ng-template>
+</ion-content>

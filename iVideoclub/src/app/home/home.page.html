@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <!--<h1>Inicio</h1>
+    <p>Contenido de ejemplo</p>
+    -->
+    <ion-card>
+        <ion-card-header>
+        <ion-card-subtitle>Bienvenidos a</ion-card-subtitle>
+        <ion-card-title>iVideoClub</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          iVideoClub es una aplicación desarrollada con Ionic.<br>
+          Para Acceder a la gestión del videoclub pulsa el siguiente botón:
+        </ion-card-content>
+        <ion-item button>
+          <ion-icon name="videocam" slot="start"></ion-icon>
+          <ion-label [routerLink]="['/videoclub']">Acceso a iVideoclub</ion-label>
+        </ion-item>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+        <ion-card-title>Información sobre el autor</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Aplicación desarrollada por Sergio Muñoz
+        </ion-card-content>
+        <ion-item button>
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label [routerLink]="['/autor']">Consultar información</ion-label>
+        </ion-item>
+    </ion-card>
+  </div>
+</ion-content>
