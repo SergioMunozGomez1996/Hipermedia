@@ -11,7 +11,7 @@
             <div class="card-body" style="padding:30px">
 
                 {{-- TODO: Abrir el formulario e indicar el método POST --}}
-                <form action="" method="POST">
+                <form action="{{action('CatalogController@postCreate')}}" method="POST">
 
                     {{-- TODO: Protección contra CSRF --}}
                     @csrf
@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                         {{-- TODO: Completa el input para el poster --}}
-                        <label for="poster">Título</label>
+                        <label for="poster">Poster</label>
                         <input type="text" name="poster" id="poster" class="form-control">
                     </div>
 
