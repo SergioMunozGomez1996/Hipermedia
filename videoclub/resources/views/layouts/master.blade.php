@@ -17,6 +17,7 @@
 <body>
     @include('partials.navbar')
     <div class="container" style="padding:15px">
+        @include('alert::alert')
         @yield('content')
     </div>
 

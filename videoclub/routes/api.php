@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('/v1/catalog', 'APICatalogController', ['only' => ['index', 'show']]);
+Route::group(['middleware' => 'auth.basic.once'], function () {
+    Route::resource('/v1/catalog', 'APICatalogController', ['only' => ['store', 'update', 'destroy']]);
+    Route::put('/v1/catalog/rent/{id}', 'APICatalogController@putRent');
+    Route::put('/v1/catalog/return/{id}', 'APICatalogController@putReturn');
+});

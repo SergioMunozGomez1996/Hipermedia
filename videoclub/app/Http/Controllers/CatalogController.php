@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use Alert;
 
 class CatalogController extends Controller
 {
@@ -40,6 +41,8 @@ class CatalogController extends Controller
         $p->synopsis = $request->input('synopsis');
         $p->save();
 
+        Alert::success('Éxito', 'La película se ha guardado correctamente');
+
         return redirect()->action('CatalogController@getIndex');
     }
 
@@ -53,6 +56,37 @@ class CatalogController extends Controller
         $movie->synopsis = $request->input('synopsis');
         $movie->save();
 
+        Alert::success('Éxito', 'La película se ha modificado correctamente');
+
         return redirect()->action('CatalogController@getShow', $id);
+    }
+
+    public function putRent($id){
+        $movie = Movie::findOrFail($id);
+        $movie->rented = true;
+        $movie->save();
+
+        Alert::success('Éxito', 'La película ha sido alquilada');
+
+        return redirect()->action('CatalogController@getShow', $id);
+    }
+
+    public function putReturn($id){
+        $movie = Movie::findOrFail($id);
+        $movie->rented = false;
+        $movie->save();
+
+        Alert::success('Éxito', 'La película ha sido devuelta');
+
+        return redirect()->action('CatalogController@getShow', $id);
+    }
+
+    public function deleteMovie($id){
+        $movie = Movie::findOrFail($id);
+        $movie->delete();
+
+        Alert::success('Éxito', 'La película ha sido borrada');
+
+        return redirect()->action('CatalogController@getIndex');
     }
 }
